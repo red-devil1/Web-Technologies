@@ -1,0 +1,68 @@
+<!-- Experiment 8: Create an Asynchronous Web Application. 
+
+Build a web page where: A button fetches the current weather information from a server or mock API using an 
+AJAX request & Display the fetched data dynamically without reloading the page.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #weather {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            display: none;
+        }
+        #error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Current Weather Information</h1>
+    <button id="getWeatherBtn">Get Weather</button>
+    <div id="weather">
+        <h2>Weather in <span id="city"></span></h2>
+        <p>Temperature: <span id="temp"></span> °C</p>
+        <p>Humidity: <span id="humidity"></span>%</p>
+        <p>Condition: <span id="condition"></span></p>
+    </div>
+    <p id="error"></p>
+    <script>
+        document.getElementById('getWeatherBtn').addEventListener('click', fetchWeather);
+
+        function fetchWeather() {
+            const xhr = new XMLHttpRequest();
+            const city = 'London'; // You can change this to any city
+            // Mock API URL for weather
+            const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_API_KEY&units=metric`;
+
+            xhr.open('GET', apiURL, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    // Display weather data
+                    document.getElementById('city').textContent = data.name;
+                    document.getElementById('temp').textContent = data.main.temp;
+                    document.getElementById('humidity').textContent = data.main.humidity;
+                    document.getElementById('condition').textContent = data.weather[0].description;
+                    document.getElementById('weather').style.display = 'block';
+                    document.getElementById('error').textContent = '';
+                } else if (xhr.readyState === 4) {
+                    document.getElementById('error').textContent = 'Failed to fetch weather data.';
+                    document.getElementById('weather').style.display = 'none';
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
