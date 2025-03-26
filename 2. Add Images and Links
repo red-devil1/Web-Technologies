@@ -1,0 +1,36 @@
+<!-- Experiment 2: Add Images and Links 
+
+a) Use an image map to make specific areas of the image clickable.  
+b) Add hyperlinks to external websites and within the same document (anchors).
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <mega charset="UTF-8">
+        <mega name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image Map and Links Example</title>
+    </head>
+    
+    <body>
+        <h1>Image Map and Hyperlinks Example</h1>
+        
+        <!-- External Links-->
+         <p>Click the link to visit <a href="https://wikipedia.org"target="_blank"> Wikipedia </a>(External Website).</p>
+         <!--Internal Link (Anchor within the document)-->
+         <p>Click the link to go to the <a href="#section2" >Second Section </a>within this Page.</p>
+         <h2>Image Map Example:</h2>
+         <img src="example-image.jpg" usemap="#image-map" alt="Example Image" width="500">
+         <!--Image Map Definition-->
+         <map name="image-map">
+            <!--Coordinates for the clickable area-->
+             <area shape="rect" coords="34,44,270,350" alt="Wikipedia" href="https://www.Wikipedia.org" target="_blank">
+             <area shape="circle" coords="400,150,40" alt="Google" href="https://www.Google.com" target="_blank">
+             <area shape="poly" coords="180,200,250,250,200,300" alt="Anchor Link" href="#section2">
+            </map>
+
+            <h2 id="section2">Second Section</h2>
+            <p>This is the second section of the page. Clicking the anchor link above will take you here.</p>
+            <p>More content goes here...</p>
+    </body>
+</html>
