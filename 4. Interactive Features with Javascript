@@ -1,0 +1,64 @@
+<!-- Experiment 4: Interactive Features with JavaScript 
+
+Write a script that:  
+a) Displays a welcome message using a popup box when the page loads.  
+b) Implements a simple form validation to ensure all required fields are filled and a valid 
+email address is entered. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation and Welcome Popup</title>
+    <script>
+        // Function to show the Welcome popup when the page loads
+        window.onload = function(){
+            alert("Welcome to our website!");
+        }
+        // Form Validation Function
+        function validateForm(){
+            // Get the form values
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            // Validate name (must not be empty)
+            if(name == ""){
+                alert("Name is required!");
+                return false;
+            }
+            // Validate email (must be in a valid email format)
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (email == ''){
+                alert("Email is required!");
+                return false;
+            }
+            else if (!email.match(emailPattern)){
+                alert("Invalid email format!");
+                return false;
+            }
+            // Validate message (must not be empty)
+            if(message == ""){
+                alert("Message is required!");
+                return false;
+            }
+            // If all validations pass, return true to submit the form
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Contact Form</h1>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" required></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>   
+</body>
+</html>
