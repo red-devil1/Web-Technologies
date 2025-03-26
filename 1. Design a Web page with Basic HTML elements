@@ -1,0 +1,66 @@
+<!-- Experiment 1: Design a Web Page with Basic HTML Elements 
+
+Create a web page that includes:  
+a) A title, heading, and paragraph text.  
+b) An ordered list and an unordered list.  
+c) A table with at least two rows and two columns, styled with a border.
+ -->
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td{
+            padding: 8px;
+            text-align: left;
+        }
+
+        th{
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to My Web Page</h1>
+    <p>This is a paragraph of text that explains the content of the webpage. It includes several elements such as list and a table.</p>
+    <h2>Ordered List Example:</h2>
+    <ol>
+        <li>First item in the List</li>
+        <li>Second item in the List</li>
+        <li>Third item in the List</li>
+    </ol>
+
+    <h2>Unordered List Example:</h2>
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+    </ul>
+    <h2>Example Table:</h2>
+    <table>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+        </tr>
+        <tr>
+            <td>Row 1, Column 1</td>
+            <td>Row 1, Column 2</td>
+        </tr>
+        <tr>
+            <td>Row 2, Column 1</td>
+            <td>Row 2, Column 2</td>
+        </tr>
+    </table>
+</body>
+</html>
